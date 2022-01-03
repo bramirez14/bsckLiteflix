@@ -13,7 +13,9 @@ cloudinary.config({
 const moviesController = {
   allmovies: async (req, res) => {
     try {
-      const result = await DB.movies.findAll();
+      const result = await DB.movies.findAll({order: [
+        ['id', 'DESC'], 
+        ],});
       res.send(result);
     } catch (e) {
       res.send(e);
